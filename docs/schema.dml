@@ -1,0 +1,35 @@
+Table Produit [headercolor: #175e7a] {
+    idProduit integer [ pk, increment, not null ]
+    Nom varchar(100) [ not null ]
+    Marque varchar(50) [ not null ]
+    Gamme varchar(50) [ not null ]
+    Nuance varchar(20)
+    Categorie varchar(20) [ not null ]
+    Stock integer [ not null, default: 0 ]
+    SeuilAlerte integer [ not null ]
+    StockIdeal integer [ not null ]
+    PrixAchat decimal(8,2) [ not null ]
+    CodeBarres varchar(20) [ unique, note: 'facultatif' ]
+}
+
+Table Commande [headercolor: #175e7a] {
+    idCommande integer [ pk, increment, not null ]
+    DateCommande date [ not null ]
+    Statut varchar(20) [ not null, default: 'en préparation' ]
+}
+
+Table LigneCommande [headercolor: #175e7a] {
+    idLigneCommande integer [ pk, increment, not null ]
+    Quantite integer [ not null ]
+    PrixUnitaire decimal(8,2) [ not null ]
+    idCommande integer [ not null ]
+    idProduit integer [ not null ]
+}
+
+Ref fk_Commande_idCommande_LigneCommande {
+    Commande.idCommande < LigneCommande.idCommande [ delete: no action, update: no action ]
+}
+
+Ref fk_Produit_idProduit_LigneCommande {
+    Produit.idProduit < LigneCommande.idProduit [ delete: no action, update: no action ]
+}
