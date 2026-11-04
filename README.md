@@ -39,8 +39,8 @@ l'historique reste juste même si le fournisseur change ses tarifs.
 
 - [x] Cahier des charges rédigé avec la gérante
 - [x] Modèle de données (MLD)
-- [ ] MCD
-- [ ] API : produits
+- [x] MCD
+- [x] API : produits
 - [ ] Front : inventaire (V1)
 
 ## Journal
